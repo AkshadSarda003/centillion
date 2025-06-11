@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamburger Menu Example</title>
+    <style>
+        /* Basic styling for the navbar */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 15px 20px;
+            color: white;
+            position: relative; /* Needed for absolute positioning of the menu */
+            z-index: 1000; /* Ensure navbar stays on top */
+        }
+
+        .navbar .logo {
+            color: white;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Hide navigation links by default on smaller screens */
+        .nav-links {
+            list-style: none;
+            display: flex; /* Display horizontally for larger screens */
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 5px 0; /* Add padding for better click area */
+            display: block; /* Make the whole link clickable */
+        }
+
+        .nav-links a:hover {
+            color: #f0f0f0;
+        }
+
+        /* Hamburger Menu Styling */
+        .hamburger-menu {
+            display: none; /* Hide by default on larger screens */
+            cursor: pointer;
+            padding: 5px; /* Add some padding for easier clicking */
+        }
+
+        .hamburger-menu .bar {
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+            transition: 0.4s; /* Smooth transition for icon transformation */
+        }
+
+        /* When the menu is open, transform the hamburger icon into an 'X' */
+        .hamburger-menu.active .bar:nth-child(1) {
+            transform: translateY(9px) rotate(-45deg);
+        }
+
+        .hamburger-menu.active .bar:nth-child(2) {
+            opacity: 0; /* Hide the middle bar */
+        }
+
+        .hamburger-menu.active .bar:nth-child(3) {
+            transform: translateY(-9px) rotate(45deg);
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Hide on smaller screens */
+                flex-direction: column; /* Stack vertically when shown */
+                width: 100%;
+                background-color: #444; /* Different background for open menu */
+                position: absolute;
+                top: 60px; /* Adjust based on your navbar height */
+                left: 0;
+                padding: 10px 0;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+            }
+
+            .nav-links.active {
+                display: flex; /* Show when active */
+            }
+
+            .nav-links li {
+                margin: 10px 0;
+                text-align: center;
+            }
+
+            .hamburger-menu {
+                display: block; /* Show hamburger on smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <a href="#" class="logo">MyBrand</a>
+        <div class="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main style="padding: 20px; text-align: center;">
+        <h1>Welcome to My Website!</h1>
+        <p>Resize your browser window to see the hamburger menu appear on smaller screens.</p>
+        <p>This is where your main website content would be placed.</p>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburgerMenu = document.querySelector('.hamburger-menu');
+            const navLinks = document.querySelector('.nav-links');
+
+            hamburgerMenu.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                hamburgerMenu.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>

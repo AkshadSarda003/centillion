@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <header class="hero-section3">
+    <div class="overlay">
+      <div id="header-placeholder"></div>
+
+    </div>
+  </header>
+
+  <section class="contact-section" style="background-color: white">
+    <div class="contact-container">
+      <div class="form-box">
+        <h2>Get in Touch with Us</h2>
+
+
+
+
+
+
+
+        <div id="contactFormContainer"></div>
+
+
+
+
+
+      </div>
+      <div class="image-box">
+        <img src="assets/image (21).png" alt="Refinery Plant" />
+      </div>
+    </div>
+  </section>
+
+
+<div id="performanceSectionContainer"></div>
+
+  <div id="footer-placeholder"></div>
+  <script src="headload.js"></script>
+  <script src="footload.js"></script>
+  <script src="script.js"></script>
+ 
+    <script>
+      // Function to load the performance section
+      function loadPerformanceSection() {
+        fetch('performance.html') // Path to your performance section HTML file
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+          })
+          .then((html) => {
+            document.getElementById('performanceSectionContainer').innerHTML = html;
+          })
+          .catch((error) => {
+            console.error('There was a problem loading the performance section:', error);
+          });
+      }
+
+      // Function to load the contact form (from our previous conversation)
+      function loadContactForm() {
+        fetch('form.html') // Path to your contact form HTML file
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.text();
+          })
+          .then((html) => {
+            document.getElementById('contactFormContainer').innerHTML = html;
+          })
+          .catch((error) => {
+            console.error('There was a problem loading the contact form:', error);
+          });
+      }
+
+      // Call the functions when the page loads
+      document.addEventListener('DOMContentLoaded', () => {
+        loadPerformanceSection();
+        loadContactForm(); // If you want to load both on the same page
+      });
+    </script>
+</body>
+
+
+</html>
